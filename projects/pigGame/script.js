@@ -6,6 +6,7 @@ const player1 = document.querySelector(".player--1");
 const score0 = document.querySelector("#score--0");
 const score1 = document.getElementById("score--1");
 const diceEl = document.querySelector(".dice");
+const win = document.querySelector(".win");
 
 const btnNew = document.querySelector(".btn--new");
 const btnRoll = document.querySelector(".btn--roll");
@@ -76,7 +77,7 @@ btnHold.addEventListener("click", function () {
       scores[activePlayer];
 
     // 2. Check if player's score is >= 100
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 20) {
       // Finish the game
       playing = false;
       document
@@ -86,6 +87,7 @@ btnHold.addEventListener("click", function () {
         .querySelector(`.player--${activePlayer}`)
         .classList.remove("player--active");
       diceEl.classList.add("hidden");
+      win.textContent = `Player ${activePlayer} Wins!!! 🎆🎇`;
     } else {
       // Switch to the next player
       switchPlayer();
