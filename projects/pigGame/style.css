@@ -183,6 +183,25 @@ main {
   transform: translateX(-50%);
 }
 
+.stat {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  width: 6rem;
+  border: 3px solid #580c0c;
+  border-radius: 8px;
+  height: 6rem;
+  margin-top: 2rem;
+  text-align: center;
+  padding: 1.5rem;
+  color: #c7365f;
+  font-size: 2rem;
+}
+
+.stat-1 {
+  left: 1rem;
+}
+
 @media screen and (max-width: 700px) {
   .name {
     font-weight: 700;
@@ -200,7 +219,7 @@ main {
 
   .btn--new {
     top: 2rem;
-    width: 60%;
+    width: 55%;
   }
 
   .btn--hold {
@@ -214,7 +233,7 @@ main {
   }
 
   .current {
-    text-align: justify;
+    text-align: center;
     width: 100%;
   }
 

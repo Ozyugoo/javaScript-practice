@@ -13,15 +13,17 @@ const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
 const current0 = document.getElementById("current--0");
 const current1 = document.getElementById("current--1");
+const stat = document.querySelector(".stat");
 
 // Stating conditions
-let scores, currentScore, activePlayer, playing;
+let scores, currentScore, activePlayer, playing, stats;
 
 const init = function () {
   scores = [0, 0];
   currentScore = 0;
   activePlayer = 0;
   playing = true;
+  stats = 0;
 
   score0.textContent = 0;
   score1.textContent = 0;
@@ -87,7 +89,8 @@ btnHold.addEventListener("click", function () {
         .querySelector(`.player--${activePlayer}`)
         .classList.remove("player--active");
       diceEl.classList.add("hidden");
-      win.textContent = `Player ${activePlayer} Wins!!! 🎆🎇`;
+      win.textContent = `Player ${activePlayer + 1} Wins!!! 🎆🎇`;
+      stat.textContent = `${stats += activePlayer}`;
     } else {
       // Switch to the next player
       switchPlayer();
