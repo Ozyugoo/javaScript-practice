@@ -13,17 +13,17 @@ const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
 const current0 = document.getElementById("current--0");
 const current1 = document.getElementById("current--1");
-const stat = document.querySelector(".stat");
+const stat1 = document.getElementById("stat--1");
+const stat2 = document.getElementById("stat--2");
 
 // Stating conditions
-let scores, currentScore, activePlayer, playing, stats;
+let scores, currentScore, activePlayer, playing;
 
-const init = function () {
+const init = function (startingPlayer = 0) {
   scores = [0, 0];
   currentScore = 0;
-  activePlayer = 0;
+  activePlayer = startingPlayer;
   playing = true;
-  stats = 0;
 
   score0.textContent = 0;
   score1.textContent = 0;
@@ -31,10 +31,14 @@ const init = function () {
   current1.textContent = 0;
 
   diceEl.classList.add("hidden");
-  player0.classList.remove("player--winner");
-  player1.classList.remove("player--winner");
-  player0.classList.add("player--active");
-  player1.classList.remove("player--active");
+  player0.classList.remove("player--winner", "player--active");
+  player1.classList.remove("player--winner", "player--active");
+
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.add("player--active");
+
+  win.textContent = "";
 };
 
 init();
@@ -89,8 +93,13 @@ btnHold.addEventListener("click", function () {
         .querySelector(`.player--${activePlayer}`)
         .classList.remove("player--active");
       diceEl.classList.add("hidden");
+
+      if (activePlayer === 1) {
+        stat1.textContent = Number(stat1.textContent) + 1;
+      } else {
+        stat2.textContent = Number(stat2.textContent) + 1;
+      }
       win.textContent = `Player ${activePlayer + 1} Wins!!! 🎆🎇`;
-      stat.textContent = `${stats += activePlayer}`;
     } else {
       // Switch to the next player
       switchPlayer();
@@ -98,4 +107,7 @@ btnHold.addEventListener("click", function () {
   }
 });
 
-btnNew.addEventListener("click", init);
+btnNew.addEventListener("click", function () {
+  const startingPlayer = player0.classList.contains('player--winner') ? 0 : 1;
+  init(startingPlayer);
+});

@@ -188,14 +188,15 @@ main {
   top: 0.5rem;
   right: 1rem;
   width: 6rem;
-  border: 3px solid #580c0c;
+  border: 3px solid #5e2727;
   border-radius: 8px;
   height: 6rem;
   margin-top: 2rem;
   text-align: center;
   padding: 1.5rem;
-  color: #c7365f;
+  color: #302629;
   font-size: 2rem;
+  font-weight: 600;
 }
 
 .stat-1 {
